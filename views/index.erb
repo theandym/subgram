@@ -1,0 +1,27 @@
+<html>
+  <head>
+
+  <title><%= "#{@hashtag} by #{@username}" %></title>
+
+    <style>
+      
+      body {
+        margin: 0;
+      }
+      
+      #images {
+        padding: 40px;
+        text-align: center;
+      }
+
+    </style>
+
+  </head>
+  <body>
+
+    <div id="images">
+      <% @images.each do |image| %><img src="<%= image['images']['thumbnail']['url'] %>"><% end %>
+    </div>
+
+  </body>
+</html>
