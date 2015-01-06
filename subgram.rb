@@ -68,15 +68,7 @@ get '/update' do
     has_text = item['caption'] && item['caption']['text'] && item['caption']['text'][hashtag]
 
     if after_start_date && is_image && has_text
-      images << {
-        'id' => item['id'],
-        'images' => { 
-          'thumbnail' => {
-            'url' => item['images']['thumbnail']['url']
-            } 
-          },
-        'created_time' => item['created_time']
-        }
+      images << item
     end
   end
 
