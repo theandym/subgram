@@ -3,15 +3,66 @@
 
   <title><%= "#{@hashtag} by #{@username}" %></title>
 
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     <style>
-      
-      body {
-        margin: 0;
+
+      /* General */
+
+      html {
+        font-family: Arial,sans-serif;
       }
       
-      #images {
-        padding: 40px;
-        text-align: center;
+      body {
+        margin: 0 auto;
+        max-width: 600px;
+        padding: 30px;
+      }
+
+      /* Elements */
+
+      h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+      }
+      h1 {
+        font-size: 48px;
+      }
+      h2 {
+        font-size: 18px;
+      }
+
+      /* Sections */
+
+      main {
+        margin-bottom: 60px;
+      }
+      main #images {}
+
+      footer {
+        background-color: #fff;
+        bottom: 0;
+        color: #aaa;
+        position: fixed;
+        width: 100%;
+      }
+      footer h1, footer h2 {
+        display: inline-block;
+        margin: 20px auto;
+      }
+      footer h1 {
+        font-weight: 600;
+      }
+      footer h2 {
+        font-weight: 100;
+      }
+      footer h2 a {
+        border-bottom: 1px dotted;
+        color: inherit;
+        text-decoration: none;
+      }
+      footer h2 a:hover, footer h2 a:active {
+        border: none;
+        color: #ccc;
       }
 
     </style>
@@ -19,9 +70,20 @@
   </head>
   <body>
 
-    <div id="images">
-      <% @images.each do |image| %><img src="<%= image['images']['thumbnail']['url'] %>"><% end %>
-    </div>
+    <main>
+      
+      <div id="images">
+        <% @images.shuffle.each do |image| %><img src="<%= image['images']['thumbnail']['url'] %>"><% end %>
+      </div>
+
+    </main>
+
+    <footer>
+
+      <h1><%= @hashtag %></h1>
+      <h2> by <a href='http://instagram.com/<%= @username %>'><i class="fa fa-user"></i> <%= @username %></a></h2>
+      
+    </footer>
 
   </body>
 </html>
